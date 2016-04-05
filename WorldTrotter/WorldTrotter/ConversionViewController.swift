@@ -37,11 +37,18 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func fahreinheitFieldEditingChanged(textField: UITextField) {
-        if let text = textField.text, value = Double(text) {
-            fahrenheitValue = value
+        if let text = textField.text, number = numberFormatter.numberFromString(text) {
+            fahrenheitValue = number.doubleValue
         } else {
             fahrenheitValue = nil
         }
+    }
+    
+    override func viewDidLoad() {
+        // Always  call the super implementation of viewDidLoad
+        super.viewDidLoad()
+        
+        print("ConversionViewController loaded its view")
     }
     
     func updateCelsiusLabel() {
@@ -59,15 +66,21 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
-        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+        
+        let currentLocale = NSLocale.currentLocale()
+        let decimalSeparator = currentLocale.objectForKey(NSLocaleDecimalSeparator) as! String
+        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(decimalSeparator)
+        let replacementTextHasDecimalSeparator = string.rangeOfString(decimalSeparator)
+        
         let alphabeticalCharacters = NSCharacterSet.letterCharacterSet()
         let replacementCharacters = string.rangeOfCharacterFromSet(alphabeticalCharacters)
         
+        // avoid usage of letters in a numberpad via bluetooth keyboard
         if replacementCharacters != nil {
             return false
         }
         
+        // disallow the user from entering more than one decimal points
         if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
             return false
         }
