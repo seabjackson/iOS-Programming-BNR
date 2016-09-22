@@ -39,7 +39,7 @@
 		2A4A16AE1CB63DCA006B11C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A4A16CA1CB64740006B11C0 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsViewController.swift; path = ../ItemsViewController.swift; sourceTree = "<group>"; };
 		2A4A16CC1CB648B8006B11C0 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
-		2A4A16CE1CB6BBD9006B11C0 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		2A4A16CE1CB6BBD9006B11C0 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemStore.swift; path = ../ItemStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,6 @@
 		2A4A168B1CB63DCA006B11C0 = {
 			isa = PBXGroup;
 			children = (
-				2A4A16CE1CB6BBD9006B11C0 /* ItemStore.swift */,
 				2A4A16961CB63DCA006B11C0 /* Homepwner */,
 				2A4A16AB1CB63DCA006B11C0 /* HomepwnerTests */,
 				2A4A16951CB63DCA006B11C0 /* Products */,
@@ -83,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				2A4A16CC1CB648B8006B11C0 /* Item.swift */,
+				2A4A16CE1CB6BBD9006B11C0 /* ItemStore.swift */,
 				2A4A16CA1CB64740006B11C0 /* ItemsViewController.swift */,
 				2A4A16971CB63DCA006B11C0 /* AppDelegate.swift */,
 				2A4A169B1CB63DCA006B11C0 /* Main.storyboard */,
