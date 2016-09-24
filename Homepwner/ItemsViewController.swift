@@ -12,30 +12,30 @@ class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
     
-    @IBAction func addNewItem(sender: AnyObject) {
+    @IBAction func addNewItem(_ sender: AnyObject) {
         // create a new item and add it to the store
         let newItem = itemStore.createItem()
         
         // figure out where that item is in the array
-        if let index = itemStore.allItems.indexOf(newItem) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        if let index = itemStore.allItems.index(of: newItem) {
+            let indexPath = IndexPath(row: index, section: 0)
             
             // insert this new row into the table
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
     
-    @IBAction func toggleEditingMode(sender: AnyObject) {
+    @IBAction func toggleEditingMode(_ sender: AnyObject) {
         // If you are currently in editing mode ...
-        if editing {
+        if isEditing {
             // change text of button to inform user of state
-            sender.setTitle("Edit", forState: .Normal)
+            sender.setTitle("Edit", for: UIControlState())
             
             // Turn off editing mode
             setEditing(false, animated: true)
         } else {
             // Change text of button to inform user of state
-            sender.setTitle("Done", forState: .Normal)
+            sender.setTitle("Done", for: UIControlState())
             
             // Enter editing mode
             setEditing(true, animated: true)
@@ -46,58 +46,67 @@ class ItemsViewController: UITableViewController {
         super.viewDidLoad()
         
         // Get the height of the status bar
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemStore.allItems.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Get a new or recycled cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         // Set the text on th cell with description of the item that is at the nth index of items, where n = row
         // this cell will appear in the tableview
-        let item = itemStore.allItems[indexPath.row]
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        
+        cell.updateLabels()
+        
+        let item = itemStore.allItems[(indexPath as NSIndexPath).row]
+        
+        // configure the cell
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
+        cell.valueLabel.textColor =  item.valueInDollars >= 50 ? UIColor.green : UIColor.red
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // if the table view is asking to commit a delete command ...
-        if editingStyle == .Delete {
-            let item = itemStore.allItems[indexPath.row]
+        if editingStyle == .delete {
+            let item = itemStore.allItems[(indexPath as NSIndexPath).row]
             
             let title = "Delete \(item.name)?"
             let message = "Are you sure you want to delete this item?"
             
-            let ac = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             ac.addAction(cancelAction)
             
-            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { (action) -> Void in
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
                 // remove the item from the store
                 self.itemStore.removeItem(item)
                 
                 // also remove that row from the table view with an animation
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
             })
             ac.addAction(deleteAction)
             
             // present the alert controller
-            presentViewController(ac, animated: true, completion: nil)
+            present(ac, animated: true, completion: nil)
         }
     }
     
-    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // update the model
-        itemStore.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        itemStore.moveItemAtIndex((sourceIndexPath as NSIndexPath).row, toIndex: (destinationIndexPath as NSIndexPath).row)
     }
     
     

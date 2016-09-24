@@ -12,13 +12,13 @@ class Item: NSObject {
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
-    var dateCreated: NSDate
+    var dateCreated: Date
     
     init(name: String, serialNumber: String?, valueInDollars: Int) {
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
-        self.dateCreated = NSDate()
+        self.dateCreated = Date()
         
         super.init()
     }
@@ -36,7 +36,7 @@ class Item: NSObject {
             
             let randomName = "\(randomAdjective) \(randomNoun)"
             let randomValue = Int(arc4random_uniform(100))
-            let randomSerialNumber = NSUUID().UUIDString.componentsSeparatedByString("-").first!
+            let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first!
             
             self.init(name: randomName, serialNumber: randomSerialNumber, valueInDollars: randomValue)
             

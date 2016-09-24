@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126EBC9F1D94D0E90017B656 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126EBC9E1D94D0E90017B656 /* ItemCell.swift */; };
 		2A4A16981CB63DCA006B11C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4A16971CB63DCA006B11C0 /* AppDelegate.swift */; };
 		2A4A169D1CB63DCA006B11C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4A169B1CB63DCA006B11C0 /* Main.storyboard */; };
 		2A4A169F1CB63DCA006B11C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A4A169E1CB63DCA006B11C0 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		126EBC9E1D94D0E90017B656 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		2A4A16941CB63DCA006B11C0 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4A16971CB63DCA006B11C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A4A169C1CB63DCA006B11C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				2A4A16CC1CB648B8006B11C0 /* Item.swift */,
 				2A4A16CE1CB6BBD9006B11C0 /* ItemStore.swift */,
 				2A4A16CA1CB64740006B11C0 /* ItemsViewController.swift */,
+				126EBC9E1D94D0E90017B656 /* ItemCell.swift */,
 				2A4A16971CB63DCA006B11C0 /* AppDelegate.swift */,
 				2A4A169B1CB63DCA006B11C0 /* Main.storyboard */,
 				2A4A169E1CB63DCA006B11C0 /* Assets.xcassets */,
@@ -147,16 +150,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Seab Jackson";
 				TargetAttributes = {
 					2A4A16931CB63DCA006B11C0 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 86SYWTB5Q2;
+						LastSwiftMigration = 0800;
 					};
 					2A4A16A71CB63DCA006B11C0 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 86SYWTB5Q2;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2A4A16931CB63DCA006B11C0;
 					};
 				};
@@ -209,6 +214,7 @@
 				2A4A16CD1CB648B8006B11C0 /* Item.swift in Sources */,
 				2A4A16CF1CB6BBD9006B11C0 /* ItemStore.swift in Sources */,
 				2A4A16981CB63DCA006B11C0 /* AppDelegate.swift in Sources */,
+				126EBC9F1D94D0E90017B656 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +269,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -307,8 +315,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -327,6 +337,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -339,6 +350,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Seab-Jackson.Homepwner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -350,6 +362,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Seab-Jackson.Homepwner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -361,6 +374,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Seab-Jackson.HomepwnerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Homepwner.app/Homepwner";
 			};
 			name = Debug;
@@ -373,6 +387,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Seab-Jackson.HomepwnerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Homepwner.app/Homepwner";
 			};
 			name = Release;

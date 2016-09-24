@@ -19,13 +19,13 @@ class ItemStore {
         return newItem
     }
     
-    func removeItem(item: Item) {
-        if let index = allItems.indexOf(item) {
-            allItems.removeAtIndex(index)
+    func removeItem(_ item: Item) {
+        if let index = allItems.index(of: item) {
+            allItems.remove(at: index)
         }
     }
     
-    func moveItemAtIndex(fromIndex: Int, toIndex: Int) {
+    func moveItemAtIndex(_ fromIndex: Int, toIndex: Int) {
         if fromIndex == toIndex {
             return
         }
@@ -34,10 +34,10 @@ class ItemStore {
         let movedItem = allItems[fromIndex]
         
         // remove item from array
-        allItems.removeAtIndex(fromIndex)
+        allItems.remove(at: fromIndex)
         
         // insert item in array at new location
-        allItems.insert(movedItem, atIndex: toIndex)
+        allItems.insert(movedItem, at: toIndex)
         
     }
 }
